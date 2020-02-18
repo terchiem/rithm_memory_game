@@ -41,22 +41,26 @@ h1 {
   font-size: 80px;
   border: 1px solid black;
   border-radius: 6px;
-  /* transform: scaleX(-1);
-  transition: all 1s ease; */
+  transform: scaleX(-1);
+  transition: all 0.8s ease;
 }
 
-/* .card-text {
-  transform: scaleX(0);
-  transition: all 0.3s ease;
+.card-text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; 
+  user-select: none; 
+  opacity: 0;
+  transition: all 0.1s linear 0.2s;
 }
 
-.card:hover > .card-text {
+.flipped {
   transform: scaleX(1);
 }
 
-.card:hover {
-  transform: scaleX(1);
-} */
+.flipped > .card-text {
+  opacity: 1;
+}
 
 /* ============================= */
 

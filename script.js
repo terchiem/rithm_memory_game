@@ -27,11 +27,17 @@ function newGame() {
   // reset variables
   // create cards
   // create card html
+  // attach cards to dom
+  // set up click events
   // set running state
 }
 
 function handleClick(e) {
-  // handle click events for document
+  if(e.currentTarget.classList.contains('flipped')) {
+    e.currentTarget.classList.remove('flipped');
+  } else {
+    e.currentTarget.classList.add('flipped');
+  }
 }
 
 function loadScore() {
@@ -51,3 +57,8 @@ const cards = document.querySelector('.cards');
 const HTML = createCardHTML(createCards());
 
 cards.innerHTML = HTML;
+
+const card = document.querySelectorAll('.card');
+card.forEach((c) => {
+  c.addEventListener('click', handleClick);
+})
