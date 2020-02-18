@@ -1,12 +1,10 @@
-const NUM_PAIRS = 7;
+const EMOJIS = ['🍔','🍕','🌭','🌮','🍗','🥓','🥪'];
 
 function createCards() {
   const cards = [];
-  const letterOffset = Math.floor(Math.random() * (26 - NUM_PAIRS)) + 65;
-  for(let i = 0; i < NUM_PAIRS; i++) {
-    const letter = String.fromCharCode(letterOffset+i);
-    cards.push(letter);
-    cards.push(letter);
+  for(let i = 0; i < EMOJIS.length; i++) {
+    cards.push(EMOJIS[i]);
+    cards.push(EMOJIS[i]);
   }
   return shuffleArr(cards);
 }
