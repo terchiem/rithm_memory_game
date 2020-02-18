@@ -2,16 +2,25 @@ const NUM_PAIRS = 7;
 
 function createCards() {
   const cards = [];
+  const letterOffset = Math.floor(Math.random() * (26 - NUM_PAIRS)) + 65;
   for(let i = 0; i < NUM_PAIRS; i++) {
-    const letter = String.fromCharCode(65+i);
+    const letter = String.fromCharCode(letterOffset+i);
     cards.push(letter);
     cards.push(letter);
   }
   return shuffleArr(cards);
 }
 
-function createCardHTML() {
-  // return string HTML of all cards
+function createCardHTML(arr) {
+  let HTML = '';
+  for(let i = 0; i < arr.length; i++) {
+    HTML += `
+      <div class="card">
+        <p class="card-text">${arr[i]}</p>
+      </div>
+    `;
+  }
+  return HTML;
 }
 
 function newGame() {
@@ -36,3 +45,9 @@ function shuffleArr(arr) {
   }
   return arr;
 }
+
+/** ================================ */
+const cards = document.querySelector('.cards');
+const HTML = createCardHTML(createCards());
+
+cards.innerHTML = HTML;
