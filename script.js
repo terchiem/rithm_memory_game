@@ -1,5 +1,5 @@
 const CARDS = document.getElementById('card-container');
-const EMOJIS = ['🍔','🍕','🌭','🌮','🍗','🥓','🥪'];
+const EMOJIS = ['🍔','🍕','🌭','🌮','🍗','🥓','🥪','🍟'];
 let currentGuess; // dom element
 let correctGuesses = 0;
 let numGuesses = 0;
@@ -22,6 +22,7 @@ function createCardsHTML(arr) {
   for(let i = 0; i < arr.length; i++) {
     HTML += `
       <div class="card">
+        <div class="card-back"></div>
         <p class="card-text">${arr[i]}</p>
       </div>
     `;

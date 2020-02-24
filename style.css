@@ -1,3 +1,8 @@
+:root {
+  --base-width: 500px;
+  --dark: #554847;
+}
+
 *,
 *:before,
 *:after {
@@ -8,11 +13,13 @@
 
 body {
   margin: 0;
+  background-color: rgb(255, 253, 227);
+  color: var(--dark);
 }
 
 h1, h2, h3,
 h4, h5, h6 {
-  margin: 0 0 5px 0;
+  margin: 0;
 }
 
 ul, p {
@@ -23,30 +30,42 @@ ul, p {
 /* ============================= */
 h1 {
   text-align: center;
+  font-family: 'Viga', Arial, Helvetica, sans-serif;
+  
 }
 
-.cards {
+#card-container {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  max-width: var(--base-width);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 1px solid red;
+  background-color: #fff9a4;
+  border-radius: 4px;
 }
 
 .card {
   margin: 10px;
-  width: 100px;
-  height: 120px;
+  width: 80px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid var(--dark);
+  background-color: #fff;
   border-radius: 6px;
   transform: scaleX(-1);
-  transition: all 0.8s ease;
+  transition: transform 0.8s ease, box-shadow 0.1s;
+}
+
+.card:hover {
+  box-shadow: 0px 1px 6px 2px #4e444465;
 }
 
 .card-text {
-  font-size: 72px;
+  font-size: 64px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none; 
@@ -57,6 +76,7 @@ h1 {
 
 .flipped {
   transform: scaleX(1);
+  box-shadow: 0px 1px 6px 2px #4e444465;
 }
 
 .flipped > .card-text {
@@ -66,16 +86,46 @@ h1 {
 /* ============================= */
 
 .panel {
-  margin: 24px;
+  max-width: var(--base-width);
+  margin: 0 auto;
+  padding: 4px 0;
   text-align: center;
-  border: 1px solid blue;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 .scores {
-  margin-bottom: 24px;
+  margin: 8px;
   display: flex;
   justify-content: space-around;
 }
 
-#new {
+button {
+  margin: 0 10px;
+  padding: 8px;
+  background-color: var(--dark);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: #745d5b;
+}
+
+.card-back {
+  position: absolute;
+  background-color: #a18b7d;
+  background: linear-gradient(45deg,
+  #a18b7d 35%, #ebd0bf 35% 40%, 
+  #a18b7d 40% 50%, #ebd0bf 50% 60%, #a18b7d 60%);
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  opacity: 1;
+  transition: all 0.1s linear 0.2s;
+}
+
+.flipped > .card-back {
+  opacity: 0;
 }

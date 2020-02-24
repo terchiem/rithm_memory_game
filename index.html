@@ -3,50 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Viga&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Memory Game</title>
+  <title>Memory Match Game</title>
 </head>
 <body>
-  <h1>Memory Game</h1>
-  <div id="card-container">
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-    <div class="card">
-      <p class="card-text">A</p>
-    </div>
-  </div>
+  <h1>MEMORY MATCH</h1>
   <div class="panel">
+    <button id="new">New Game</button>
+    <button id="reset">Reset Record</button>
+    <hr>
     <div class="scores">
       <div>Current Guesses: 
         <span id="current-guesses">0</span>
@@ -55,9 +21,11 @@
         <span id="record-guesses">0</span>
       </div>
     </div>
-    <button id="new">New Game</button>
-    <button id="reset">Reset Record</button>
   </div>
+
+  <div id="card-container">
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
