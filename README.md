@@ -1,2 +1,2 @@
-# rithm_memory_game
-Memory Game for Rithm School
+# Memory Match Game
+Memory Game created for Rithm School.
