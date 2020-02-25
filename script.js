@@ -55,14 +55,15 @@ function handleClick(e) {
  
   if (currentGuess === null) {
     currentGuess = e.currentTarget;
-  } else {
+  } 
+  else {
     numGuesses++;
     updateGuessDisplay();
     if (currentGuess.innerHTML == e.currentTarget.innerHTML) {
       correctGuesses++;
-      // add correct fx to cards
       checkGameOver();
-    } else {
+    } 
+    else {
       waiting = true;
       flipBack(currentGuess);
       flipBack(e.currentTarget);
@@ -80,8 +81,8 @@ function flipBack(card) {
  
 function checkGameOver() {
   if (correctGuesses === EMOJIS.length) {
-    // display win message alert
-    setRecord(numGuesses);
+    const newRecord = setRecord(numGuesses);
+    displayWin(newRecord);
     updateRecordDisplay();
   }
 }
@@ -111,7 +112,9 @@ function setRecord(num) {
  
   if (record === null || num < +record) {
     storage.setItem('record', num);
+    return true;
   }
+  return false;
 }
  
 function updateRecordDisplay() {
@@ -126,24 +129,67 @@ function updateGuessDisplay() {
  
 function resetRecord() {
   window.localStorage.removeItem('record');
+  updateRecordDisplay();
+}
+
+function displayWin(newRecord) {
+  let text = "You Win!";
+
+  if(newRecord) {
+    text += "\nNew Record!";
+  }
+
+  setModal(text, closeModal);
+  showModal();
 }
  
 function promptNewGame() {
-  const result = window.confirm("Start a new game?");
-  if (result === true) {
-    newGame();
-  }
+  setModal('Start a new game?', newGame);
+  showModal();
 }
  
 function promptResetRecord() {
-  const result = window.confirm("Reset the current record?");
-  if (result === true) {
-    resetRecord();
-    updateRecordDisplay();
-  }
+  setModal('Reset record score?', resetRecord);
+  showModal();
+}
+/***************************
+ *       Modal Dialog
+ ***************************/
+const modalOverlay = document.getElementById('modal-overlay');
+const modalClose = document.getElementById('modal-close');
+const modalContent = document.getElementById('modal-content');
+const modal = document.getElementById('modal');
+
+function closeModal() {
+  modalOverlay.classList.add('closed');
+  modal.classList.add('closed');
 }
 
+function showModal() {
+  modalOverlay.classList.remove('closed');
+  modal.classList.remove('closed');
+}
+
+function setModal(text, callback) {
+  // replace confirm button's callback
+  const modalConfirm = document.getElementById('modal-confirm');
+  const newConfirm = modalConfirm.cloneNode(true);
+  modal.replaceChild(newConfirm, modalConfirm);
+  newConfirm.addEventListener('click', () => {
+    callback();
+    closeModal();
+  })
+
+  modalContent.innerHTML = text;
+}
+
+modalOverlay.addEventListener('click', closeModal);
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => e.stopPropagation());
+
 /** ================================ */
+
 document.getElementById('new').addEventListener('click', promptNewGame);
 document.getElementById('reset').addEventListener('click', promptResetRecord);
+
 newGame();

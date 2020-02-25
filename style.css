@@ -1,6 +1,7 @@
 :root {
   --base-width: 500px;
   --dark: #554847;
+  --light: #fffde3;
 }
 
 *,
@@ -13,8 +14,9 @@
 
 body {
   margin: 0;
-  background-color: rgb(255, 253, 227);
+  background-color: var(--light);
   color: var(--dark);
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 h1, h2, h3,
@@ -43,7 +45,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: #fff9a4;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .card {
@@ -90,7 +92,6 @@ h1 {
   margin: 0 auto;
   padding: 4px 0;
   text-align: center;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
 
@@ -110,7 +111,7 @@ button {
 }
 
 button:hover {
-  background-color: #745d5b;
+  background-color: #8a6e6c;
 }
 
 .card-back {
@@ -128,4 +129,53 @@ button:hover {
 
 .flipped > .card-back {
   opacity: 0;
+}
+
+/* ============================= */
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000006b;
+}
+
+#modal {
+  position: fixed;
+  width: 400px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light);
+  box-shadow: 0 0 40px 10px #000000a4;
+  text-align: center;
+  z-index: 100;
+}
+
+#modal-content {
+  margin: 1.2rem 0;
+  padding-top: 10px;
+  font-size: 2rem;
+}
+
+#modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  color: var(--dark);
+  font-size: 36px;
+}
+
+#modal-close:hover {
+  color: #8a6e6c;
+}
+
+.closed {
+  display: none;
 }
